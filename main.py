@@ -57,3 +57,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+#need to figure out a way to add the close price to the files and sync the dates
+    #start cleaning - tj if u wanna do that
