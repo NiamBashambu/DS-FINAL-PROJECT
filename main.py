@@ -45,13 +45,22 @@ def main():
 # Loop through each CSV file and append its contents to the combined dataframe
     for csv_file in csv_files:
         df = pd.read_csv(csv_file)
-       
-        df['filename'] = os.path.basename(csv_file)
-        combined_df = pd.concat([combined_df, df])
+        df['filename'] = os.path.basename(csv_file).replace('.csv', '')  # Add stock name as a column
+        
+        combined_df = pd.concat([combined_df, df[['Date', 'Close', 'filename']]])
+    
+    # Pivot the DataFrame to have dates as index and stocks as columns
+    pivoted_df = combined_df.pivot(index='Date', columns='filename', values='Close')
+    
+    # Print the pivoted dataframe
+    print(pivoted_df)
 
 # Print the combined dataframe
-    print(combined_df)
     
+
+    
+
+
 
 
 
@@ -59,7 +68,3 @@ if __name__ == "__main__":
     main()
 
 
-
-
-#need to figure out a way to add the close price to the files and sync the dates
-    #start cleaning - tj if u wanna do that
