@@ -35,7 +35,7 @@ def main():
     
     # Print the pivoted dataframe
     print(pivoted_df)
-
+    
 # Print the combined dataframe
     
 
