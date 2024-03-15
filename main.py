@@ -13,25 +13,6 @@ DIR = "/Users/niambashambu/Desktop/DS FINAL PROJECT/data"
 FILENAME = "AAPL.csv"
 YEAR_HEADER = "Date"
 
-def clean_numeric(s):
-    ''' given a string with extra characters $ or , or %, remove them
-        and return the value as a float
-    '''
-    s = s.replace("$", "")
-    s = s.replace("%", "")
-    s = s.replace(",", "")
-    s= s.replace(":", "")
-    return float(s)
-def clean_data(dct):
-    ''' given a dictionary that includes currency and
-        numbers in the form x,xxx, clean them up and convert
-        to int/float
-    '''
-    for key, value in dct.items():
-        for i in range(len(value)):
-            if not value[i].replace(" ", "").isalpha():
-                value[i] = clean_numeric(value[i])
-
 def main():
     
 
