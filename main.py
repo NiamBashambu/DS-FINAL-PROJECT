@@ -72,13 +72,15 @@ def main():
     plt.ylabel('CLose Price',fontsize=18)
     plt.show()
 
-    X_train , X_test, y_train, y_test = train_test_split(pivoted_df,uber_csv)
-    lr = LogisticRegression(max_iter=100,C=1)
+    #X_train , X_test, y_train, y_test = train_test_split(,range(0,1260))
+    
+
+    lr = LogisticRegression(max_iter=1000,C=1)
     lr.fit(X_train,y_train)
 
     predictions = lr.predict(X_test)
     predictions=predictions.tolist()
-    actual = y_test.tolist()
+    actual = y_test
     1-mse(predictions,actual)
     
 
