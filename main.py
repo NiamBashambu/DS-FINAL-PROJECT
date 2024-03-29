@@ -61,8 +61,8 @@ def main():
 
     nike_csv = pivoted_df["NKE"]
     
-
-    print(uber_csv)
+    '''
+    #print(uber_csv)
     dataframes = []
     dataframes.append(uber_csv)
     dataframes.append(apple_csv)
@@ -76,7 +76,7 @@ def main():
         plt.xlabel('Date',fontsize=18)
         plt.ylabel('CLose Price',fontsize=18)
         plt.show()
-    
+    '''
     
     
     
@@ -120,18 +120,24 @@ def main():
     plt.ylabel('Outcome / Predicted Probability')
     plt.legend()
     plt.show()
-
-    '''X_train , X_test, y_train, y_test = train_test_split(,range(0,1260))
     
 
-    lr = LogisticRegression(max_iter=1000,C=1)
-    lr.fit(X_train,y_train)
 
+    #making the linear regression model to show the predicted prices
+    X = pivoted_df[['AAPL']].iloc[1:]  
+    y = pivoted_df['AAPL_Target'].iloc[1:] 
+
+# split into train test
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+    lr = LinearRegression()
+    lr.fit(X_train, y_train)
     predictions = lr.predict(X_test)
-    predictions=predictions.tolist()
     actual = y_test
-    1-mse(predictions,actual)
-    '''
+
+    print(1-mse(predictions,actual))
+
+    #need to make the graphs
 
     
 
