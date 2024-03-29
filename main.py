@@ -76,6 +76,50 @@ def main():
         plt.xlabel('Date',fontsize=18)
         plt.ylabel('CLose Price',fontsize=18)
         plt.show()
+    
+    
+    
+    
+    
+    ### this is a logistic regression model that converst the values of hte price to 0 and 1 determine if the stock price will increase or decrease
+    stocks = ['AAPL', 'GOOG', 'UBER (1)', 'NKE']
+    for stock in stocks:
+    
+        pivoted_df[stock + '_Diff'] = pivoted_df[stock].diff()
+    
+        pivoted_df[stock + '_Target'] = (pivoted_df[stock + '_Diff'] > 0).astype(int)
+
+#  AAPL
+    X = pivoted_df[['AAPL']].iloc[1:]  
+    y = pivoted_df['AAPL_Target'].iloc[1:] 
+
+# split into train test
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# create and train logistic regression model
+    lr = LogisticRegression()
+    lr.fit(X_train, y_train)
+
+# evaluate said model
+    predictions = lr.predict(X_test)
+    print("Accuracy:", accuracy_score(y_test, predictions))
+
+    predictions_proba = lr.predict_proba(X_test)[:, 1]  #get probability
+
+# creating a scatter plot with the probabilities
+    plt.figure(figsize=(10, 6))
+
+# ploting actuall outcomes
+    plt.scatter(X_test, y_test, color='black', label='Actual Outcomes (0: Decrease, 1: Increase)')
+
+# plot the predicted outcomes
+    plt.scatter(X_test, predictions_proba, color='blue', alpha=0.5, label='Predicted Probabilities of Increase')
+
+    plt.title('Actual Outcomes vs. Predicted Probabilities for AAPL Stock')
+    plt.xlabel('Previous Day Closing Price')
+    plt.ylabel('Outcome / Predicted Probability')
+    plt.legend()
+    plt.show()
 
     '''X_train , X_test, y_train, y_test = train_test_split(,range(0,1260))
     
@@ -88,6 +132,8 @@ def main():
     actual = y_test
     1-mse(predictions,actual)
     '''
+
+    
 
 if __name__ == "__main__":
     main()
