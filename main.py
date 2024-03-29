@@ -77,7 +77,7 @@ def main():
         plt.ylabel('CLose Price',fontsize=18)
         plt.show()
 
-    #X_train , X_test, y_train, y_test = train_test_split(,range(0,1260))
+    '''X_train , X_test, y_train, y_test = train_test_split(,range(0,1260))
     
 
     lr = LogisticRegression(max_iter=1000,C=1)
@@ -87,7 +87,7 @@ def main():
     predictions=predictions.tolist()
     actual = y_test
     1-mse(predictions,actual)
-    
+    '''
 
 if __name__ == "__main__":
     main()
