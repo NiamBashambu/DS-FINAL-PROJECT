@@ -63,14 +63,19 @@ def main():
     
 
     print(uber_csv)
-
-
-    plt.figure(figsize = (18,9))
-    plt.plot(uber_csv)
+    dataframes = []
+    dataframes.append(uber_csv)
+    dataframes.append(apple_csv)
+    dataframes.append(google_csv)
+    dataframes.append(nike_csv)
+    for dataframe in dataframes:
+        plt.figure(figsize = (18,9))
+        plt.plot(dataframe)
+        plt.title(dataframe)
     #plt.xticks(range(0,1827))
-    plt.xlabel('Date',fontsize=18)
-    plt.ylabel('CLose Price',fontsize=18)
-    plt.show()
+        plt.xlabel('Date',fontsize=18)
+        plt.ylabel('CLose Price',fontsize=18)
+        plt.show()
 
     #X_train , X_test, y_train, y_test = train_test_split(,range(0,1260))
     
