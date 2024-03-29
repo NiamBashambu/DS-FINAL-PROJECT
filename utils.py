@@ -81,3 +81,14 @@ def moving_avg(lst,num=2):
 
     return newlst
         
+def mse(predicted,actual):
+    x_error = []
+    for p,a in zip(predicted,actual):
+        
+        x= ((p - a)**2)
+        x_error.append(x)
+        
+    mean_square_error = sum(x_error)/len(x_error)
+        
+    return mean_square_error
+       
