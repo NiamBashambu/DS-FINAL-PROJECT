@@ -110,7 +110,7 @@ def main():
     plt.figure(figsize=(10, 6))
 
 # ploting actuall outcomes
-    plotting = plt.scatter(X_test, y_test, color='black', label='Actual Outcomes (0: Decrease, 1: Increase)')
+    plt.scatter(X_test, y_test, color='black', label='Actual Outcomes (0: Decrease, 1: Increase)')
 
 # plot the predicted outcomes
     plotting_predicted = plt.scatter(X_test, predictions_proba, color='blue', alpha=0.5, label='Predicted Probabilities of Increase')
@@ -139,24 +139,22 @@ def main():
 
     #need to make the graphs
 
-#the actual linear regression graph of AAPL
-    plt.linear(plotting, color='blue', alpha=0.5, label='Predicted Probabilities of Increase')
+
+#Comparison of both linear regression in one graph
+    plt.linear(predictions, actual, color='magenta', alpha=0.5, label='Predicted Probabilities of Increase')
     plt.title('Actual Outcomes vs. Predicted Probabilities for AAPL Stock')
     plt.xlabel('Previous Day Closing Price')
-    plt.ylabel('Outcome / Predicted Probability')
+    plt.ylabel('Actual Outcome')
     plt.legend()
     plt.show()
-#the predicted linear regression graph of AAPL
-    plt.linear(plotting_predicted, color='blue', alpha=0.5, label='Predicted Probabilities of Increase')
-    plt.title('Actual Outcomes vs. Predicted Probabilities for AAPL Stock')
+#Bar Chart of predictions and acutual bar graph rate of stock
+    plt.bar(predictions, actual, color = 'blue', width = '0.4')
+    plt.title('Predicted Outcomes and Probabilites for AAPL Stock')
     plt.xlabel('Previous Day Closing Price')
-    plt.ylabel('Outcome / Predicted Probability')
+    plt.ylabel('Actual Outcome')
     plt.legend()
     plt.show()
 
-
-
-    
 
 if __name__ == "__main__":
     main()
