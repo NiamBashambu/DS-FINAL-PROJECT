@@ -153,7 +153,7 @@ def main():
 
 #Comparison of both linear regression in one graph
     plt.figure(figsize=(10, 6))
-    plt.scatter(X_test, y_test, color='black', label='Actual Prices')
+    plt.scatter(X_test, actual, color='black', label='Actual Prices')
     plt.plot(X_test, predictions, color='blue', linewidth=2, label='Predicted Prices')
     plt.title('Actual vs Predicted AAPL Stock Prices')
     plt.xlabel('Previous Day Closing Price')
