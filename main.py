@@ -146,7 +146,7 @@ def main():
 
     
 
-    #print(mean_squared_error(predictions,actual))
+    print(mean_squared_error(predictions,actual))
 
     #need to make the graphs
 
