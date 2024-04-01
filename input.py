@@ -70,9 +70,8 @@ lr = LinearRegression()
 lr.fit(X_train, y_train)
 predictions = lr.predict(X_test)
 actual = y_test
-    #print(predictions)
 
-    
+
 
 print(mean_squared_error(predictions,actual))
 
@@ -85,6 +84,9 @@ plt.xlabel('Previous Day Closing Price')
 plt.ylabel('Next Day Closing Price')
 plt.legend()
 plt.show()  
-
+'''
+sorted_pred = sorted(predictions)
+print(sorted_pred)
+'''
 
 
