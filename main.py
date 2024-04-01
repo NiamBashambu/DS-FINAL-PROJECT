@@ -141,7 +141,7 @@ def main():
 
 
 #Comparison of both linear regression in one graph
-    plt.linear(predictions, actual, color='magenta', alpha=0.5, label='Predicted Probabilities of Increase')
+    plt.plot(predictions, actual, color='magenta', alpha=0.5, label='Predicted Probabilities of Increase')
     plt.title('Actual Outcomes vs. Predicted Probabilities for AAPL Stock')
     plt.xlabel('Previous Day Closing Price')
     plt.ylabel('Actual Outcome')
