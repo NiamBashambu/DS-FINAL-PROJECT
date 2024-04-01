@@ -89,4 +89,20 @@ sorted_pred = sorted(predictions)
 print(sorted_pred)
 '''
 
+#doing the prediction logic
+#obviously very basic as this is a linear regression model and we are only looking at close price and no other features
+predicted_change_percentage = (predictions - X_test[stock_variable + '_lagged']) / X_test[stock_variable + '_lagged'] * 100
 
+# Determine the average predicted change
+average_predicted_change = predicted_change_percentage.mean()
+
+
+# investment threshold 
+investment_threshold = 0.1  # Example threshold: 0.1% increase
+
+if average_predicted_change >= investment_threshold:
+    print(f"The average predicted increase in the next day closing price for {stock_variable} is {average_predicted_change:.2f}%.")
+    print("This stock shows a promising upward trend.")
+else:
+    print(f"The average predicted increase in the next day closing price for {stock_variable} is {average_predicted_change:.2f}%.")
+    print("This stock does not show a strong enough upward trend based on our model's predictions.")
