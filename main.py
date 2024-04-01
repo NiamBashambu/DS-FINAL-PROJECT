@@ -13,6 +13,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import mean_squared_error
 
 
 from utils import get_filename, read_csv, lst_to_dct, normalize, moving_avg,mse
@@ -113,48 +114,63 @@ def main():
     plt.scatter(X_test, y_test, color='black', label='Actual Outcomes (0: Decrease, 1: Increase)')
 
 # plot the predicted outcomes
-    plotting_predicted = plt.scatter(X_test, predictions_proba, color='blue', alpha=0.5, label='Predicted Probabilities of Increase')
+    plt.scatter(X_test, predictions_proba, color='blue', alpha=0.5, label='Predicted Probabilities of Increase')
 
     plt.title('Actual Outcomes vs. Predicted Probabilities for AAPL Stock')
     plt.xlabel('Previous Day Closing Price')
     plt.ylabel('Outcome / Predicted Probability')
     plt.legend()
     plt.show()
-    
-
+    #trying to do pairplot(don't do it it lags out your computer cuz the data is too big)
+    #sns.pairplot(pivoted_df)
+    #plt.show()
 
     #making the linear regression model to show the predicted prices
-    X = pivoted_df[['AAPL']].iloc[1:]  
-    y = pivoted_df['AAPL_Target'].iloc[1:] 
+    
+    pivoted_df['AAPL_lagged'] = pivoted_df['AAPL'].shift(1)
+    pivoted_df.dropna(inplace=True)  # Drop the first row which now contains NaN
+
+# Features and target variable
+    X = pivoted_df[['AAPL_lagged']]  # Features: Previous day's closing price
+    y = pivoted_df['AAPL']
+    
 
 # split into train test
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
 
     lr = LinearRegression()
     lr.fit(X_train, y_train)
     predictions = lr.predict(X_test)
     actual = y_test
+    #print(predictions)
 
-    print(1-mse(predictions,actual))
+    
+
+    #print(mean_squared_error(predictions,actual))
 
     #need to make the graphs
 
 
 #Comparison of both linear regression in one graph
-    plt.plot(predictions, actual, color='magenta', alpha=0.5, label='Predicted Probabilities of Increase')
-    plt.title('Actual Outcomes vs. Predicted Probabilities for AAPL Stock')
+    plt.figure(figsize=(10, 6))
+    plt.scatter(X_test, y_test, color='black', label='Actual Prices')
+    plt.plot(X_test, predictions, color='blue', linewidth=2, label='Predicted Prices')
+    plt.title('Actual vs Predicted AAPL Stock Prices')
     plt.xlabel('Previous Day Closing Price')
-    plt.ylabel('Actual Outcome')
+    plt.ylabel('Next Day Closing Price')
     plt.legend()
-    plt.show()
+    plt.show()  
+
+'''
 #Bar Chart of predictions and acutual bar graph rate of stock
-    plt.bar(predictions, actual, color = 'blue', width = '0.4')
+    plt.bar(X_test, y_test,color = 'blue')
+    plt.bar(X_test,predictions,color = "pink")
     plt.title('Predicted Outcomes and Probabilites for AAPL Stock')
     plt.xlabel('Previous Day Closing Price')
     plt.ylabel('Actual Outcome')
     plt.legend()
     plt.show()
-
+'''
 
 if __name__ == "__main__":
     main()
