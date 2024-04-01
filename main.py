@@ -105,7 +105,8 @@ def main():
     predictions = lr.predict(X_test)
     print("Accuracy:", accuracy_score(y_test, predictions))
 
-    predictions_proba = lr.predict_proba(X_test)[:, 1]  #get probability
+    predictions_proba = lr.predict_proba(X_test)[:, 1]
+    print(predictions_proba)  #get probability
 
 # creating a scatter plot with the probabilities
     plt.figure(figsize=(10, 6))
