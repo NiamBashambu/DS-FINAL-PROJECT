@@ -54,7 +54,7 @@ for stock in stocks:
     pivoted_df[stock + '_lagged'] = pivoted_df[stock].shift(1)
 
 pivoted_df.dropna(inplace=True) 
-print(pivoted_df) # Drop the first row which now contains NaN
+#print(pivoted_df) # Drop the first row which now contains NaN
 
 stock_variable = input("Gimme a stock avlue that u want to do the model on ")
 
