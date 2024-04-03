@@ -59,7 +59,7 @@ print(pivoted_df)
 #stocks = ['AAPL', 'GOOG', 'UBER (1)', 'NKE','ADDYY','INTC','MSFT','META','NVDA','AMD']
 #for stock in stocks:
 
-
+ 
 inertias = []
 
 for i in range(1,11):

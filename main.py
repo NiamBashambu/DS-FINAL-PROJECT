@@ -125,7 +125,7 @@ def main():
     #trying to do pairplot(don't do it it lags out your computer cuz the data is too big)
     #sns.pairplot(pivoted_df)
     #plt.show()
-
+ 
     #making the linear regression model to show the predicted prices
     
     pivoted_df['AAPL_lagged'] = pivoted_df['AAPL'].shift(1)

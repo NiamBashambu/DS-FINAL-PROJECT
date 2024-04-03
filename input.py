@@ -75,7 +75,7 @@ actual = y_test
 
 print(mean_squared_error(predictions,actual))
 
-
+ 
 plt.figure(figsize=(10, 6))
 plt.scatter(X_test, actual, color='black', label='Actual Prices')
 plt.plot(X_test, predictions, color='blue', linewidth=2, label='Predicted Prices')

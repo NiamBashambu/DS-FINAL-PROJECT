@@ -58,7 +58,7 @@ def normalize(lst):
     '''
     minn = min(lst)
     maxx = max(lst)
-
+  
     normal = []
 
     for x in lst:
