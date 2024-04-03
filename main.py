@@ -53,7 +53,8 @@ def main():
     
     #take the data from a few stocks, UBER, AAPL, GOOG, NIKE
 
-
+    #these are plots for a few datasets 
+    '''
     uber_csv = pivoted_df["UBER (1)"]
 
     apple_csv = pivoted_df["AAPL"]
@@ -62,7 +63,7 @@ def main():
 
     nike_csv = pivoted_df["NKE"]
     
-    '''
+    
     #print(uber_csv)
     dataframes = []
     dataframes.append(uber_csv)
@@ -77,8 +78,8 @@ def main():
         plt.xlabel('Date',fontsize=18)
         plt.ylabel('CLose Price',fontsize=18)
         plt.show()
-    '''
     
+    '''
     
     
     
