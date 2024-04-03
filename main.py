@@ -121,7 +121,7 @@ def main():
     plt.title('Actual Outcomes vs. Predicted Probabilities for AAPL Stock')
     plt.xlabel('Previous Day Closing Price')
     plt.ylabel('Outcome / Predicted Probability')
-    plt.legend()
+    plt.legend(bbox_to_anchor=(1.1, 1.05))
     plt.show()
     #trying to do pairplot(don't do it it lags out your computer cuz the data is too big)
     #sns.pairplot(pivoted_df)
