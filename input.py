@@ -56,7 +56,7 @@ for stock in stocks:
 pivoted_df.dropna(inplace=True) 
 #print(pivoted_df) # Drop the first row which now contains NaN
 
-stock_variable = input("Gimme a stock avlue that u want to do the model on ")
+stock_variable = input("Give a stock value that you want to do the model on ")
 
 # Features and target variable
 X = pivoted_df[[stock_variable+'_lagged']]  # Features: Previous day's closing price
